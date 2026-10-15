@@ -1,0 +1,219 @@
+/* =========================================================================
+   VitalScore Master Design System - Dark & Light Mode Theme Support
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Crimson Brand Palette (Preserved across both modes) */
+  --crimson-dark: #630010;
+  --crimson-primary: #8b0018;
+  --crimson-accent: #a30820;
+  --crimson-bright: #c81e32;
+  --crimson-pulse: #e52e4d;
+  --crimson-soft: #fff0f3;
+  --crimson-border: #ffd1dc;
+}
+
+/* =========================================================================
+   DARK THEME (Default Obsidian Clinical)
+   ========================================================================= */
+.theme-dark {
+  --bg-main: #080103;
+  --bg-sidebar: #100205;
+  --bg-header: rgba(18, 3, 7, 0.95);
+  --bg-card: #140409;
+  --bg-card-subtle: #1e060d;
+  --bg-input: #1e060d;
+  --border-subtle: rgba(229, 46, 77, 0.22);
+  --border-active: #e52e4d;
+  --text-primary: #ffffff;
+  --text-secondary: #fadbe0;
+  --text-muted: #b89da2;
+  --text-dim: #735b62;
+  --shadow-card: 0 12px 32px rgba(0, 0, 0, 0.4);
+  --bg-body-radial: radial-gradient(circle at 50% 0%, rgba(229, 46, 77, 0.18) 0%, transparent 65%),
+                     radial-gradient(circle at 90% 30%, rgba(163, 8, 32, 0.12) 0%, transparent 50%),
+                     radial-gradient(circle at 10% 70%, rgba(255, 81, 102, 0.08) 0%, transparent 50%);
+}
+
+/* =========================================================================
+   LIGHT THEME (Clinical Pure Luxury Light)
+   ========================================================================= */
+.theme-light {
+  --bg-main: #f5f7fb;
+  --bg-sidebar: #ffffff;
+  --bg-header: rgba(255, 255, 255, 0.95);
+  --bg-card: #ffffff;
+  --bg-card-subtle: #f8fafc;
+  --bg-input: #f8fafc;
+  --border-subtle: #e2e8f0;
+  --border-active: #8b0018;
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+  --text-dim: #9ca3af;
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --bg-body-radial: radial-gradient(circle at 50% 0%, rgba(229, 46, 77, 0.06) 0%, transparent 60%),
+                     radial-gradient(circle at 100% 50%, rgba(163, 8, 32, 0.04) 0%, transparent 50%);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Reset buttons & inputs */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  outline: none;
+}
+
+/* Animations */
+@keyframes arterialPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 20px rgba(229, 46, 77, 0.45));
+  }
+  50% {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 38px rgba(255, 81, 102, 0.75));
+  }
+}
+
+@keyframes ecgScanWave {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes orbitalSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.anim-pulse {
+  animation: arterialPulse 3s ease-in-out infinite;
+}
+
+.anim-ecg {
+  animation: ecgScanWave 3.2s linear infinite;
+}
+
+.anim-orbit {
+  animation: orbitalSpin 60s linear infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(163, 8, 32, 0.35);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(229, 46, 77, 0.7);
+}
+
+.vs-no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.vs-no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Range Slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 9999px;
+  background: #cbd5e1;
+  outline: none;
+  transition: background 0.2s;
+}
+
+.theme-dark input[type="range"] {
+  background: #2a0b12;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--crimson-pulse);
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 10px rgba(229, 46, 77, 0.6);
+  cursor: pointer;
+  transition: transform 0.15s, background-color 0.15s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #ff5166;
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(0.95);
+}
+
+/* =========================================================================
+   PRINT & CLINICAL PDF EXPORT STYLING
+   ========================================================================= */
+@media print {
+  body, html {
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-size: 11pt !important;
+  }
+  .no-print,
+  .vs-sidebar,
+  .vs-header,
+  .btn-print-hide,
+  button:not(.btn-print-allow) {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .clinical-report-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+  }
+  .print-border {
+    border: 1px solid #cbd5e1 !important;
+  }
+}

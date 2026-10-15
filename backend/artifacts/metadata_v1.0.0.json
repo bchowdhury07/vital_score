@@ -1,0 +1,51 @@
+{
+  "artifact_version": "1.0.0",
+  "training_date": "2026-10-14T19:58:18.454955+00:00",
+  "dataset": "heart.csv (UCI / Kaggle Heart Failure dataset)",
+  "num_samples": 918,
+  "num_features": 9,
+  "features": [
+    "age",
+    "sex",
+    "cp",
+    "trestbps",
+    "chol",
+    "fbs",
+    "thalach",
+    "exang",
+    "oldpeak"
+  ],
+  "random_seed": 42,
+  "stratified_test_split": 0.2,
+  "svm_kernel": "rbf",
+  "svm_c": 0.1,
+  "svm_gamma": "0.1",
+  "svm_calibration_method": "Platt scaling (probability=True)",
+  "bayesian_inference_method": "Laplace Approximation (Multivariate Normal MAP with inverse Hessian)",
+  "bayesian_draws": 2000,
+  "bayesian_priors": "alpha ~ Normal(0, 100), beta_i ~ Normal(0, 100)",
+  "calibration_threshold_ci_width": 0.25828039657533863,
+  "calibration_threshold_sigma": 0.06661055277172515,
+  "calibration_provenance_run": "Held-out test split (N=184, seed=42) 85th percentile",
+  "test_metrics": {
+    "svm": {
+      "accuracy": 0.8641304347826086,
+      "precision": 0.8737864077669902,
+      "recall": 0.8823529411764706,
+      "f1": 0.8780487804878049,
+      "roc_auc": 0.9231229076996652,
+      "brier_score": 0.1013865439206546
+    },
+    "bayesian_laplace": {
+      "accuracy": 0.8804347826086957,
+      "precision": 0.8846153846153846,
+      "recall": 0.9019607843137255,
+      "f1": 0.8932038834951457,
+      "roc_auc": 0.9155906264945003,
+      "brier_score": 0.1110037690830772,
+      "mean_ci_width": 0.15234802934021896,
+      "mean_sigma": 0.03934859764517817
+    }
+  },
+  "disclaimer": "Academic coursework demonstration only. This system illustrates uncertainty-aware Bayesian classification vs. standard SVM baselines and is not a clinically validated tool."
+}
